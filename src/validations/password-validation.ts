@@ -1,21 +1,19 @@
-function isNumber(value: string): boolean {
-  return new RegExp('^(?=.*[0-9]).+$').test(value);
+export function isNumber(value: string): boolean {
+  return /^(?=.*[0-9]).+$/.test(value);
 }
 
-function isLowercaseChar(value: string): boolean {
-  return new RegExp('^(?=.*[a-z]).+$').test(value);
+export function isLowercaseChar(value: string): boolean {
+  return /^(?=.*[a-z]).+$/.test(value);
 }
 
-function isUppercaseChar(value: string): boolean {
-  return new RegExp('^(?=.*[A-Z]).+$').test(value);
+export function isUppercaseChar(value: string): boolean {
+  return /^(?=.*[A-Z]).+$/.test(value);
 }
 
-function isSpecialChar(value: string): boolean {
-  return new RegExp('^(?=.*[-+_!@#$%^&*.,?]).+$').test(value);
+export function isSpecialChar(value: string): boolean {
+  return /^(?=.*[-+_!@#$%^&*.,?]).+$/.test(value);
 }
 
-function minLength(value: string): boolean {
+export function minLength(value: string): boolean {
   return value.length > 7;
 }
-
-export { isNumber, isLowercaseChar, isUppercaseChar, isSpecialChar, minLength };

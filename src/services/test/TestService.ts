@@ -4,20 +4,38 @@ import {
   TestSaveReq,
   TestSaveRes,
 } from '@Src/services/test/model';
-import { Service } from '@Src/services/Service';
-import ServiceImpl from '@Src/services/ServiceImpl';
+import { ServiceBase } from '@Src/services/ServiceBase';
 
 class TestService {
-  private service: Service;
+  /**
+   * API Service 객체
+   * @type {ServiceBase}
+   * @private
+   */
+  private service: ServiceBase;
 
-  constructor(service: Service) {
+  /**
+   * 생성자 주입
+   * @param {ServiceBase} service
+   */
+  constructor(service: ServiceBase) {
     this.service = service;
   }
 
+  /**
+   * 테스트 전체 조회
+   * @param {TestFindAllReq} params
+   * @returns {Promise<TestFindAllRes>}
+   */
   getTest(params: TestFindAllReq) {
-    return this.service.get<TestFindAllRes, TestFindAllReq>('', params);
+    return this.service.get<TestFindAllRes, TestFindAllReq>('/test', params);
   }
 
+  /**
+   * 테스트 등록
+   * @param {TestSaveReq} data
+   * @returns {Promise<TestSaveRes>}
+   */
   addTest(data: TestSaveReq) {
     return this.service.post<TestSaveRes, TestSaveReq>('/test', data);
   }

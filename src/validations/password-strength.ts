@@ -8,15 +8,14 @@ import {
 } from '@Src/types/password';
 
 // has number
-const hasNumber: StringBoolFunc = (number) => new RegExp(/[0-9]/).test(number);
+const hasNumber: StringBoolFunc = (number) => /[0-9]/.test(number);
 
 // has mix of small and capitals
 const hasMixed: StringBoolFunc = (number) =>
-  new RegExp(/[a-z]/).test(number) && new RegExp(/[A-Z]/).test(number);
+  /[a-z]/.test(number) && /[A-Z]/.test(number);
 
 // has special chars
-const hasSpecial: StringBoolFunc = (number) =>
-  new RegExp(/[!#@$%^&*)(+=._-]/).test(number);
+const hasSpecial: StringBoolFunc = (number) => /[!#@$%^&*)(+=._-]/.test(number);
 
 // set color based on password strength
 export const strengthColor: NumbColorFunc = (count) => {

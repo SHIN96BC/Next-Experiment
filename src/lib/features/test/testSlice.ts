@@ -12,8 +12,11 @@ const testSlice = createSlice({
   name: 'tests',
   initialState,
   reducers: {
-    setTestName(state, action: PayloadAction<string>) {
-      state.testName = action.payload;
+    setTestName(state: TestState, action: PayloadAction<string>) {
+      const newState = { ...state };
+      newState.testName = action.payload;
+
+      return newState;
     },
   },
 });

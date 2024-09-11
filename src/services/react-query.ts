@@ -6,12 +6,9 @@ import {
   QueryKey,
   QueryState,
 } from '@tanstack/react-query';
-import isEqual from '@Src/services/isEqual';
+import isEqual from '@Src/utils/services/isEqual';
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
-
-/* getQueryClient는 공식문서에서 권장하는대로 서버에서 데이터를 fetching 할 때 마다 필요한 queryClient를 cache해서 사용할 수 있도록 구성 */
-export const getQueryClient = cache(() => new QueryClient());
 
 interface QueryProps<ResponseType = unknown> {
   queryKey: QueryKey;
@@ -21,6 +18,9 @@ interface QueryProps<ResponseType = unknown> {
 interface DehydratedQueryExtended<TData = unknown, TError = unknown> {
   state: QueryState<TData, TError>;
 }
+
+/* getQueryClient는 공식문서에서 권장하는대로 서버에서 데이터를 fetching 할 때 마다 필요한 queryClient를 cache해서 사용할 수 있도록 구성 */
+export const getQueryClient = cache(() => new QueryClient());
 
 /* getDehydratedQuery는 서버에서 데이터를 prefetching하고 dehydrate한 결과를 return 하도록 구성(SSR) */
 export async function getDehydratedQuery<Q extends QueryProps>({
